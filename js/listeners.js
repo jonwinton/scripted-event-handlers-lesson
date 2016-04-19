@@ -24,7 +24,7 @@
         Turtle.clear();
     });
 
-    document.addEventListener('keydown', detectKey);
+    $(document).on('keydown', detectKey);
     
     
 })(window.Turtle);
