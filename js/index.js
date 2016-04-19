@@ -1,48 +1,43 @@
 /* global right forward penStyle left stam*/
-(function(TinyTurtle){
+(function(TinyTurtle, window){
     
-    // Without any arguments, TinyTurtle uses the first canvas on the page.
-    var canvas = document.querySelector('canvas');
-    var clear = document.querySelector('.clear');
-    var restore = document.querySelector('.restore');
-    var ctx = canvas.getContext('2d');
-    var currentImg = null;
-    
-    
-    TinyTurtle.apply(window, canvas);
-    
-    function box(length) {
-      for (var i = 0; i < 4; i++) {
-        forward(length);
-        right(90);
-      }
-    }
-    
-    function turtleStamp() {
-        var ctx = canvas.getContext('2d');
-        
-        
-        var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        ctx.putImageData(imgData, 0, 0);
-        
-    }
-    
-    clear.addEventListener('click', function(){
-        currentImg = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    });    
-    
-    restore.addEventListener('click', function() {
-         ctx.putImageData(currentImg, 0, 0);
-    });
+    var Turtle = function() {
+        this.init();
+    };
 
-    penStyle = 'purple';
-    box(90);
-    left(10);
-    box(80);
-    left(10);
-    box(70);
+    var proto = Turtle.prototype;
+
+    // Init
+    proto.init = function() {
+        // Canvas
+        this.canvas = document.querySelector('canvas');
+        // Canvas Context
+        this.ctx = this.canvas.getContext('2d');
+        // Instantiate Tiny Turtle
+        this.Turtle = new TinyTurtle(this.canvas);
+
+        this.forwardStep = 5;
+        this.turnStep = 10;
+    }
+
+    // Move Forward
+    proto.forward = function() {
+        this.Turtle.forward(this.forwardStep);
+    }
+
+    proto.right = function() {
+        this.Turtle.right(this.turnStep);
+    };
+
+    proto.left = function() {
+        this.Turtle.left(this.turnStep);
+    };
+
+    proto.clear = function() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.Turtle = new TinyTurtle(this.canvas);
+    }
+
     
-    // turtleStamp();
-})(window.TinyTurtle);
+    window.Turtle = new Turtle();
+})(window.TinyTurtle, window);

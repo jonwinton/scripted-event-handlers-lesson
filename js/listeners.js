@@ -1,5 +1,5 @@
 /* global right forward penStyle left*/
-(function() {
+(function(Turtle) {
     
     /**
      * Detects which key was pressed
@@ -8,22 +8,23 @@
         var code = event.keyCode;
         switch(code) {
             case 37:
-                console.log('left');
+                Turtle.left();
                 break;
             case 38:
-                forward(90);
+                Turtle.forward();
                 break;
             case 39:
-                right(90);
-                break;
-            case 40:
-                console.log('down');
+                Turtle.right();
                 break;
         }
     }
     
-    
+    var clear = document.querySelector('.clear');
+    clear.addEventListener('click', function() {
+        Turtle.clear();
+    });
+
     document.addEventListener('keydown', detectKey);
     
     
-})();
+})(window.Turtle);
