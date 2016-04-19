@@ -38,6 +38,21 @@
         this.Turtle = new TinyTurtle(this.canvas);
     }
 
+    proto.setColor = function(color) {
+        this.Turtle.penStyle = color || 'black';
+    }
+
+    proto.setWidth = function(width) {
+        this.Turtle.penWidth = width || 1;
+    }
+
+    proto.liftUp = function(width) {
+        this.Turtle.penUp();
+    }
+
+    proto.putDown = function(width) {
+        this.Turtle.penDown();
+    }
     
     window.Turtle = new Turtle();
 })(window.TinyTurtle, window);
