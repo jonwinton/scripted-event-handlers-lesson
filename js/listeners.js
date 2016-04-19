@@ -1,30 +1,55 @@
-/* global right forward penStyle left*/
-(function(Turtle) {
+(function(Turtle, $) {
     
-    /**
-     * Detects which key was pressed
-     */
-    function detectKey(event) {
-        var code = event.keyCode;
-        switch(code) {
-            case 37:
-                Turtle.left();
-                break;
-            case 38:
-                Turtle.forward();
-                break;
-            case 39:
-                Turtle.right();
-                break;
-        }
-    }
     
-    var clear = document.querySelector('.clear');
-    clear.addEventListener('click', function() {
-        Turtle.clear();
-    });
+    ////////////////////////////////////////////////////////////////////////
+    /// DO ALL YOUR WORK HERE
+    /// 
+    /// 
+    /// Functions to make the drawing:
+    ///     - Turtle.forward();
+    ///     - Turtle.right();
+    ///     - Turtle.left();
+    ///     - Turtle.clear();
+    ///     
+    ////////////////////////////////////////////////////////////////////////
 
-    $(document).on('keydown', detectKey);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-    
-})(window.Turtle);
+})(window.Turtle, window.jQuery);
